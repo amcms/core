@@ -32,6 +32,9 @@
         "squizlabs/php_codesniffer": "^2.3"
     },
     "autoload": {
+        "files": [
+            "src/Helpers/helpers.php"
+        ],
         "psr-4": {
             "Amcms\\": "src"
         }

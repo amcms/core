@@ -34,6 +34,12 @@ class Controller implements ControllerContract
     {
         // $this->logger->addInfo('Controller ' . __CLASS__ . ' run');
         // var_dump($args);
-        return __CLASS__;
+        // print_r($request->getUri()->getPath());
+        
+        // если нет такого маршрута, пробуем подключить статический файл
+        if (file_exists(resources_path('views/raw/' . $args['arg']))) {
+            return require resources_path('views/raw/' . $args['arg']);
+        }
+        return '';//__CLASS__;
     }
 }
