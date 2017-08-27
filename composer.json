@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Amcms\\Core\\": "src"
+            "Amcms\\": "src"
         }
     },
     "autoload-dev": {
