@@ -1,12 +1,17 @@
 <?php
 
-namespace \Amcms\Controllers;
+namespace Amcms\Controllers;
 use Amcms\Contracts\Controller\Controller as ControllerContract;
 
 
 class Controller implements ControllerContract
 {
     public function __construct()
+    {
+        //
+    }
+
+    public function boo($key, $value = NULL)
     {
         //
     }

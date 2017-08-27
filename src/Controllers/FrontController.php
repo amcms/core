@@ -1,6 +1,6 @@
 <?php
 
-namespace \Amcms\Controllers;
+namespace Amcms\Controllers;
 
 
 class FrontController extends Controller

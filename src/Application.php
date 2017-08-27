@@ -1,6 +1,6 @@
 <?php
 
-namespace Amcms\Core;
+namespace Amcms;
 use Slim\App;
 
 class Application extends App
