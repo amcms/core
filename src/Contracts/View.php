@@ -1,6 +1,6 @@
 <?php
 
-namespace Amcms\Contracts\View;
+namespace Amcms\Contracts;
 
 interface View
 {

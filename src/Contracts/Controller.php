@@ -1,6 +1,6 @@
 <?php
 
-namespace Amcms\Contracts\Controller;
+namespace Amcms\Contracts;
 
 interface Controller
 {
