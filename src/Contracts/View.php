@@ -12,7 +12,7 @@ interface View
      * @param null              $data
      * @return ResponseInterface
      */
-    public function render(ResponseInterface $response, $viewParams=[], $data = null);
+    public function render(ResponseInterface $response, $template, $viewParams=[]);
 
     
     /**
@@ -20,5 +20,5 @@ interface View
      * @param array $viewParams
      * @return string
      */
-    public function toString($data=null, $viewParams=[]);
+    // public function toString($data=null, $viewParams=[]);
 }

@@ -8,7 +8,7 @@ class AuthController extends Controller
     public function getSignup($request, $response)
     {
         // twig response
-        // dd($request->getUri()->getBasePath());
+        // dd($request->getUri()->getPath());
         return $this->twig->render($response, 'auth/signup.twig');
 
         // php render
