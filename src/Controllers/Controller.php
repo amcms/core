@@ -33,14 +33,20 @@ class Controller implements ControllerContract
     public function run($request, $response, $args)
     {
         // $this->logger->addInfo('Controller ' . __CLASS__ . ' run');
-        // var_dump($args);
-        // print_r($request->getUri()->getPath());
-        // print_r(app('db'));
+        
+        // здесь должен быть вызов парсера MODX, который вернет результат, либо null
+        $modLogic = new ModxController($this->container);
+        $result = $modLogic->execute($request, $response, $args);
         
         // если нет такого маршрута, пробуем подключить статический файл
-        if (file_exists(resource_path('views/raw/' . $args['arg']))) {
+        if (!$result && file_exists(resource_path('views/raw/' . $args['arg']))) {
             return require resource_path('views/raw/' . $args['arg']);
         }
+
+        // для отладки, чтобы не заблудиться
         return $request->getUri()->getPath();//__CLASS__;
+
+        // скорее всего, будет так
+        // return $result;
     }
 }
