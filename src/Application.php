@@ -20,6 +20,6 @@ class Application extends App
      */
     public function registerBaseServices()
     {
-        //
+        //see https://github.com/slimphp/Slim/blob/3.x/Slim/DefaultServicesProvider.php
     }
 }
