@@ -1,24 +1,24 @@
 <?php
 
 namespace Amcms\Contracts;
+use Psr\Http\Message\ResponseInterface;
 
 interface View
 {
 
     /**
-     * Get the evaluated contents of the object.
-     *
-     * @return string
+     * @param ResponseInterface $response
+     * @param array             $viewParams
+     * @param null              $data
+     * @return ResponseInterface
      */
-    public function render();
+    public function render(ResponseInterface $response, $viewParams=[], $data = null);
 
     
     /**
-     * Add a piece of data to the view.
-     *
-     * @param  string|array  $key
-     * @param  mixed   $value
-     * @return $this
+     * @param null  $data
+     * @param array $viewParams
+     * @return string
      */
-    public function with($key, $value = null);
+    public function toString($data=null, $viewParams=[]);
 }
