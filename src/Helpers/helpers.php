@@ -2,6 +2,7 @@
 /**
  * This file is a part of AMCms core
  */
+use Symfony\Component\VarDumper\VarDumper;
 
 if (! function_exists('app')) {
     /**
@@ -69,4 +70,22 @@ if (! function_exists('resource_path')) {
 //         return app($type);
 //     }
 // }
+// 
+
+if (! function_exists('dd')) {
+    /**
+     * Dump the passed variables and end the script.
+     *
+     * @param  mixed
+     * @return void
+     */
+    function dd()
+    {
+        foreach (func_get_args() as $var) {
+            VarDumper::dump($var);
+        }
+
+        die(1);
+    }
+}
 

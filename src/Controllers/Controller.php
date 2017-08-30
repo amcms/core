@@ -44,7 +44,7 @@ class Controller implements ControllerContract
         }
 
         // для отладки, чтобы не заблудиться
-        return $request->getUri()->getPath();//__CLASS__;
+        return 'You ask for ' . $request->getUri()->getPath();//__CLASS__;
 
         // скорее всего, будет так
         // return $result;
