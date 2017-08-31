@@ -28,6 +28,7 @@ class TwigExtension extends SlimTwigExtension
 
             // own methods
             new \Twig_SimpleFunction('config', array($this, 'getConfigVar')),
+            new \Twig_SimpleFunction('globalPh', array($this, 'getGlobalPh')),
         ];
     }
 
@@ -37,5 +38,16 @@ class TwigExtension extends SlimTwigExtension
             return $this->container['settings'][$name];
         }
         return $default;
+    }
+
+    /**
+     * Parse global placeholder
+     * 
+     * @param string $ph 
+     * @return mixed|null
+     */
+    public function getGlobalPh($ph)
+    {
+        return app('gphs')->get($ph);
     }
 }
