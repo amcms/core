@@ -1,9 +1,8 @@
 <?php
 
 namespace Amcms\View;
-use Slim\Views\TwigExtension as SlimTwigExtension;
 
-class TwigExtension extends SlimTwigExtension
+class TwigExtension extends \Twig_Extension
 {
     private $container;
 
@@ -37,5 +36,15 @@ class TwigExtension extends SlimTwigExtension
             return $this->container['settings'][$name];
         }
         return $default;
+    }
+
+    public function pathFor($name, $data = [], $queryParams = [], $appName = 'default')
+    {
+        return $this->router->pathFor($name, $data, $queryParams);
+    }
+
+    public function isCurrentPath($name)
+    {
+        return $this->router->pathFor($name) === $this->uri->getPath();
     }
 }

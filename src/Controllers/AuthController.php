@@ -21,6 +21,8 @@ class AuthController extends Controller
 
     public function postSignup($request, $response)
     {
-        //
+        $data = $request->getParsedBody();
+        $data = $request->getParam('name');
+        dd($data);
     }
 }
