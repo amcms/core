@@ -32,6 +32,34 @@ if (! function_exists('app')) {
     }
 }
 
+if (! function_exists('config')) {
+    /**
+     * Get the available container setting item.
+     *
+     * @param  string  $settingItem
+     * @param  array   $parameters
+     * @return string
+     */
+    function config($settingItem=null)
+    {
+        /**
+         * @todo  Remove global!!!
+         * We need change method of recieving $app instance. 
+         * Singleton? 
+         * Including helpers in bootstrap?
+         */
+        global $app;
+
+        $container = $app->getContainer();
+
+        if (is_null($settingItem)) {
+            return $container['settings'];
+        }
+
+        return $container['settings'][$settingItem];
+    }
+}
+
 if (! function_exists('app_path')) {
     /**
      * Get the path to the application folder.
@@ -41,7 +69,7 @@ if (! function_exists('app_path')) {
      */
     function app_path($path = '')
     {
-        return app('path').($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return config('path').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
