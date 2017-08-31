@@ -27,6 +27,7 @@ class TwigExtension extends \Twig_Extension
 
             // own methods
             new \Twig_SimpleFunction('config', array($this, 'getConfigVar')),
+            new \Twig_SimpleFunction('globalPh', array($this, 'getGlobalPh')),
         ];
     }
 
@@ -36,5 +37,27 @@ class TwigExtension extends \Twig_Extension
             return $this->container['settings'][$name];
         }
         return $default;
+    }
+
+<<<<<<< HEAD
+    public function pathFor($name, $data = [], $queryParams = [], $appName = 'default')
+    {
+        return $this->router->pathFor($name, $data, $queryParams);
+    }
+
+    public function isCurrentPath($name)
+    {
+        return $this->router->pathFor($name) === $this->uri->getPath();
+=======
+    /**
+     * Parse global placeholder
+     * 
+     * @param string $ph 
+     * @return mixed|null
+     */
+    public function getGlobalPh($ph)
+    {
+        return app('gphs')->get($ph);
+>>>>>>> a7c6a09858f611635812762d7899f4e72f9ce415
     }
 }

@@ -39,7 +39,11 @@ class Controller implements ControllerContract
         $result = $modLogic->execute($request, $response, $args);
         
         // если нет такого маршрута, пробуем подключить статический файл
+<<<<<<< HEAD
+        if (!$result && $args['arg'] && file_exists(resource_path('views/raw/' . $args['arg']))) {
+=======
         if (!$result && !empty($args['arg']) && file_exists(resource_path('views/raw/' . $args['arg']))) {
+>>>>>>> a7c6a09858f611635812762d7899f4e72f9ce415
             return require resource_path('views/raw/' . $args['arg']);
         }
 

@@ -39,4 +39,15 @@ class Parser
         print_r($chunk);
         return 'OK';
     }
+
+    /**
+     * Parse global placegolders 
+     * 
+     * @param string $ph 
+     * @return mixed|null
+     */
+    public function globalPh($ph)
+    {
+        return app('gphs')->get($ph);
+    }
 }
