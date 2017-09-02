@@ -2,7 +2,7 @@
 
 namespace Amcms\Contracts;
 
-interface Controller
+interface Service
 {
 
     /**
