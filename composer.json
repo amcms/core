@@ -18,6 +18,7 @@
     ],
     "require": {
         "php": "~5.6|~7.0",
+        "awurth/slim-validation": "^2.1",
         "filp/whoops": "^2.1",
         "illuminate/database": "^5.4",
         "monolog/monolog": "^1.23",
