@@ -1,6 +1,7 @@
 <?php
 
 namespace Amcms\Services;
+
 use Amcms\Contracts\Service as ServiceContract;
 
 
@@ -8,14 +9,14 @@ class Service implements ServiceContract
 {
     protected $container;
 
-    protected $logger;
+    // protected $logger;
 
     // protected $view;
 
     public function __construct($container)
     {
         $this->container = $container;
-        $this->logger = $container['logger'];
+        // $this->logger = $container['logger'];
     }
 
     public function __get($service)
@@ -25,8 +26,8 @@ class Service implements ServiceContract
         }
     }
 
-    public function boo($key, $value = NULL)
-    {
-        //
-    }
+    // public function boo($key, $value = NULL)
+    // {
+    //     //
+    // }
 }

@@ -12,5 +12,5 @@ interface Service
      * @param  mixed   $value
      * @return $this
      */
-    public function boo($key, $value = null);
+    // public function boo($key, $value = null);
 }
