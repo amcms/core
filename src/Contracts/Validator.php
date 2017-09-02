@@ -2,7 +2,7 @@
 
 namespace Amcms\Contracts;
 
-use Psr\Http\Message\RequestInterface;
+use Slim\Http\Request as Request;
 
 interface Validator
 {
@@ -14,5 +14,5 @@ interface Validator
      * @param  mixed   $value
      * @return $this
      */
-    public function validate(RequestInterface $request, $rules = []);
+    public function check(Request $request, $rules = []);
 }

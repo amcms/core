@@ -24,6 +24,11 @@ class Application extends App
         //see example https://github.com/slimphp/Slim/blob/3.x/Slim/DefaultServicesProvider.php
         $container = $this->getContainer();
 
+        // wrapper for Request validation
+        if (!isset($container['validator'])) {
+            $container['validator'] = new \Amcms\Services\ValidatorService();
+        }
+
         // Twig View 
         if (!isset($container['twig'])) {
             $container['twig'] = function ($c) {
