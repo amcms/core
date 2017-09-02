@@ -42,21 +42,11 @@ if (! function_exists('config')) {
      */
     function config($settingItem=null)
     {
-        /**
-         * @todo  Remove global!!!
-         * We need change method of recieving $app instance. 
-         * Singleton? 
-         * Including helpers in bootstrap?
-         */
-        global $app;
-
-        $container = $app->getContainer();
-
         if (is_null($settingItem)) {
-            return $container['settings'];
+            return app('settings');
         }
 
-        return $container['settings'][$settingItem];
+        return app('settings')[$settingItem];
     }
 }
 
@@ -69,7 +59,7 @@ if (! function_exists('app_path')) {
      */
     function app_path($path = '')
     {
-        return config('path').($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return app('path').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
@@ -83,6 +73,19 @@ if (! function_exists('resource_path')) {
     function resource_path($path = '')
     {
         return app_path('resources') . ($path ? DIRECTORY_SEPARATOR.$path : $path);
+    }
+}
+
+if (! function_exists('database_path')) {
+    /**
+     * Get the path to the resources folder.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function database_path($path = '')
+    {
+        return app_path('database') . ($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 

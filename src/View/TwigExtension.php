@@ -37,4 +37,9 @@ class TwigExtension extends \Twig_Extension
         }
         return $default;
     }
+
+    public function pathFor($name, $data = [], $queryParams = [], $appName = 'default')
+    {
+        return $this->router->pathFor($name, $data, $queryParams);
+    }
 }
