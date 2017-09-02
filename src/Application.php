@@ -26,7 +26,7 @@ class Application extends App
 
         // wrapper for Request validation
         if (!isset($container['validator'])) {
-            $container['validator'] = new \Amcms\Services\ValidatorService();
+            $container['validator'] = new \Amcms\Services\ValidatorService($container);
         }
 
         // Twig View 

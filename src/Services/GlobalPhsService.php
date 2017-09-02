@@ -13,12 +13,17 @@ class GlobalPhsService extends Service
      * Add/write global placeholder
      * 
      * @param string $ph 
-     * @param string $value 
+     * @param mixed $value 
      * @return null
      */
-    public function set($ph, $value)
+    public function set($ph, $value, $namespace = null)
     {
-        $this->phs[$ph] = $value;
+        if ($namespace) {
+            $this->phs[$namespace][$ph] = $value;
+        } else {
+            $this->phs[$ph] = $value;
+        }
+        
     }
 
     /**
@@ -32,7 +37,8 @@ class GlobalPhsService extends Service
         if (isset($this->phs[$ph])) {
             return $this->phs[$ph];
         }
-         return null;
+        
+        return null;
     }
 
 }

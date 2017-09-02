@@ -11,8 +11,9 @@ class ValidatorService extends Service
 {
     protected $engine;
 
-    public function __construct()
+    public function __construct($container)
     {
+        parent::__construct($container);
         $this->engine = new Engine();
     }
 
@@ -43,6 +44,7 @@ class ValidatorService extends Service
 
             if ($message) {
                 $validateAr[$param] = ['rules' => $validateAr[$param], 'message' => $message];
+                unset($message);
             }
             
         }
@@ -50,15 +52,21 @@ class ValidatorService extends Service
         if (is_array($validateAr)) {
             $this->engine->validate($request, $validateAr);
 
-            if ($this->engine->isValid()) {
-                dd('valid');
-            } else {
-                $errors = $this->engine->getErrors();
-                dd($errors);
+            if ($this->failed()) {
+                $this->flash->addMessage('form.old', $request->getParsedBody()); // or getParams()?
+                $this->flash->addMessage('form.errors', $this->getErrors());
+                return false;
             }
         }
+
+        return true;
     }
 
+    /**
+     * Create rules chain
+     * @param array $ruleAr string-based rules
+     * @return  Respect\Validation\Validator 
+     */
     protected function setRules($ruleAr)
     {
         v::with('Amcms\\Services\\ValidatorRules\\');
@@ -85,5 +93,23 @@ class ValidatorService extends Service
         }
 
         return $vObj;
+    }
+
+    /**
+     * Wrapper for validate engine
+     * @return mixed error array
+     */
+    public function getErrors()
+    {
+        return $this->engine->getErrors();
+    }
+
+    /**
+     * Wrapper for validate engine
+     * @return boolean 
+     */
+    public function failed()
+    {
+        return !$this->engine->isValid();
     }
 }

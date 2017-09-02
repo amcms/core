@@ -27,6 +27,8 @@ class TwigExtension extends \Twig_Extension
 
             // own methods
             new \Twig_SimpleFunction('config', array($this, 'getConfigVar')),
+            new \Twig_SimpleFunction('ph', array($this, 'getGlobalPh')),
+            new \Twig_SimpleFunction('old', array($this, 'getOldRequestData')),
         ];
     }
 
@@ -41,5 +43,17 @@ class TwigExtension extends \Twig_Extension
     public function pathFor($name, $data = [], $queryParams = [], $appName = 'default')
     {
         return $this->router->pathFor($name, $data, $queryParams);
+    }
+
+    public function getGlobalPh($name)
+    {
+        $data = $this->container->globalPhs->get($name);
+        return $data;
+    }
+
+    public function getOldRequestData()
+    {
+        // if (isset($this->container->globalPhs->get))
+        return 't';
     }
 }
