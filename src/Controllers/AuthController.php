@@ -2,8 +2,8 @@
 
 namespace Amcms\Controllers;
 
+use App\Models\User;
 use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\NestedValidationException as vE;
 
 class AuthController extends Controller
 {
@@ -12,7 +12,7 @@ class AuthController extends Controller
         // twig response
         return $this->twig->render($response, 'auth/signup.twig');
 
-        // php render
+        // php render response
         // return $this->php->render($response, 'auth/signup.inc', 
         //     [
         //         'title' => 'Php view test',
@@ -24,7 +24,7 @@ class AuthController extends Controller
     {
         // $this->db->table('users')->insert(['name' => 'test', 'email' => 'test1@test.com', 'password' => '123']);
 
-        $this->validator->check($request, [
+        $forSave = $this->validator->check($request, [
                 'name' => ['required', 'Name is require'],
                 'email' => 'email',
                 'password' => [function() { return v::notEmpty(); }, 'Password is require'],
@@ -33,9 +33,12 @@ class AuthController extends Controller
         if ($this->validator->failed()) {
             return $response->withRedirect($this->router->pathFor('signup.get'));
         }
+
+        $user = User::create($forSave);
+        return $response->withRedirect($this->router->pathFor('front', []));
         
-        $data = $request->getParsedBody();
+        // $data = $request->getParsedBody();
         // $data = $request->getParam('name');
-        dd($data);
+        // dd($data);
     }
 }

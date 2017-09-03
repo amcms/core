@@ -25,7 +25,11 @@ class ValidatorService extends Service
      */
     public function check(Request $request, $rules = [])
     {
+        $forReturn = [];
+
         foreach ($rules as $param => $rule) {
+            $forReturn[$param] = $request->getParam($param);
+
             if (is_array($rule)) {
                 list($rule, $message) = $rule;
             }
@@ -59,7 +63,13 @@ class ValidatorService extends Service
             }
         }
 
-        return true;
+        // return true;
+        
+        /**
+         * Testing 
+         * Return all request body params
+         */
+        return $forReturn;
     }
 
     /**

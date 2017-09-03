@@ -29,6 +29,11 @@ class Application extends App
             $container['validator'] = new \Amcms\Services\ValidatorService($container);
         }
 
+        // Auth service
+        if (!isset($container['auth'])) {
+            $container['auth'] = new \Amcms\Services\AuthService($container);
+        }
+
         // Twig View 
         if (!isset($container['twig'])) {
             $container['twig'] = function ($c) {
