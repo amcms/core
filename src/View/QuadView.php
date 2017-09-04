@@ -15,7 +15,8 @@ class QuadView extends Quad implements ViewContract
      * @return ResponseInterface
      */
     public function render(ResponseInterface $response, $template, $viewParams=[]) {
-        echo $this->renderTemplate($template, $viewParams);
+        $out = $this->renderTemplate($template, $viewParams);
+        $response->getBody()->write($out);
         return $response;
     }
 }
