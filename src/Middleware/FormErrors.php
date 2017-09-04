@@ -20,11 +20,7 @@ class FormErrors extends Middleware
         $data = $this->flash->getMessage('form.errors');
 
         if ($data && $data[0]) {
-            $this->globalPhs->set('errors', $data);
-
-            // пока не готов механизм подключения глобальных плейсхолдеров, устанавливаем для twig 
-            // глобальные значения
-            $this->twig->getEnvironment()->addGlobal('errors', $data[0]);
+            $this->globalPhs->set('errors', $data[0]);
         }
 
         return $next($request, $response);
