@@ -36,8 +36,7 @@ class Parser
 
     public function parseChunk($chunk, $ph, $openTag = '[+', $closeTag = '+]')
     {
-        print_r($chunk);
-        return 'OK';
+        return $this->container->get('quad')->parseChunk($chunk, $ph);
     }
 
     /**

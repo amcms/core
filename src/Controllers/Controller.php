@@ -43,6 +43,14 @@ class Controller implements ControllerContract
         if (!$result && !empty($args['arg']) && file_exists(resource_path('views/raw/' . $args['arg']))) {
             return require resource_path('views/raw/' . $args['arg']);
         }
+        
+        // вывод шаблона через эмулятор старого парсера
+        //$out = $this->modx->parseChunk('@CODE: [+a+]', ['a' => '1', 'b' => '2']);
+        //$response->getBody()->write($out);
+        //return $response;
+
+        // вывод нормального человека
+        //return $this->container->get('quad')->render($response, '@CODE [+a+]', ['a' => 1]);
 
         // для отладки, чтобы не заблудиться
         return 'You ask for ' . $request->getUri()->getPath();//__CLASS__;
