@@ -39,6 +39,15 @@ class Parser
         return $this->container->get('quad')->parseChunk($chunk, $ph);
     }
 
+    public function parseTemplate($template, $ph)
+    {
+        if (strpos($template, '@') !== 0) {
+            $template = $template . '.tpl';
+        }
+        
+        return $this->container->get('quad')->renderTemplate($template, $ph);
+    }
+
     /**
      * Parse global placegolders 
      * 
