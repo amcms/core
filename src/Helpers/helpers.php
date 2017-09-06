@@ -120,3 +120,15 @@ if (! function_exists('dd')) {
     }
 }
 
+if (!function_exists('raw')) {
+    /**
+     * Converts template to inline template
+     * 
+     * @param  string $template
+     * @return string
+     */
+    function raw($template)
+    {
+        return '@CODE: ' . $template;
+    }
+}
