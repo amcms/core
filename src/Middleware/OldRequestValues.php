@@ -20,11 +20,7 @@ class OldRequestValues extends Middleware
         $data = $this->flash->getMessage('form.old');
 
         if ($data && $data[0]) {
-            $this->globalPhs->set('old', $data);
-
-            // пока не готов механизм подключения глобальных плейсхолдеров, устанавливаем для twig 
-            // глобальные значения
-            $this->twig->getEnvironment()->addGlobal('old', $data[0]);
+            $this->globalPhs->set('old', $data[0]);
         }
 
         return $next($request, $response);
