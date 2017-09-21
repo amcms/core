@@ -12,6 +12,9 @@ class AuthController extends Controller
         // twig response
         return $this->twig->render($response, 'auth/signup.twig');
 
+        // quad response
+        //return $this->quad->render($response, 'auth/signup.tpl');
+        
         // php render response
         // return $this->php->render($response, 'auth/signup.inc', 
         //     [
