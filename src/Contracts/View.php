@@ -14,6 +14,13 @@ interface View
      */
     public function render(ResponseInterface $response, $template, $viewParams=[]);
 
+    /**
+     * Adds global variable to view
+     * @param string $name
+     * @param string $value
+     * @param array  $options
+     */
+    public function setGlobal($name, $value, $options = []);
     
     /**
      * @param null  $data

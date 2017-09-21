@@ -19,4 +19,14 @@ class QuadView extends Quad implements ViewContract
         $response->getBody()->write($out);
         return $response;
     }
+
+    /**
+     * Adds global variable to view
+     * @param string $name
+     * @param string $value
+     * @param array  $options
+     */
+    public function setGlobal($name, $value, $options = []) {
+        $this->setPlaceholder($name, $value);
+    }
 }

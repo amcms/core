@@ -24,23 +24,13 @@ class GlobalPhsService extends Service
             $this->phs[$ph] = $value;
         }
 
-        $this->setTwigGlobal($ph, $value, $namespace);        
-    }
+        if ($this->twig) {
+            $this->twig->setGlobal($ph, $value, ['namespace' => $namespace]);
+        }
 
-    /**
-     * Add/write global twig placeholder
-     * @param type $ph 
-     * @param type $value 
-     * @param type|null $namespace 
-     * @return type
-     */
-    public function setTwigGlobal($ph, $value, $namespace = null)
-    {
-        if ($namespace) {
-            $this->twig->getEnvironment()->addGlobal($namespace, [$ph => $value]);
-        } else {
-            $this->twig->getEnvironment()->addGlobal($ph, $value);
-        }        
+        if ($this->quad) {
+            $this->quad->setGlobal($ph, $value);
+        }
     }
 
     /**
