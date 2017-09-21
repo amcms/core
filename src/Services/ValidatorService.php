@@ -46,7 +46,7 @@ class ValidatorService extends Service
                                             ->setName('"' . ucfirst($param) . '"');
             }
 
-            if ($message) {
+            if (isset($message)) {
                 $validateAr[$param] = ['rules' => $validateAr[$param], 'message' => $message];
                 unset($message);
             }
